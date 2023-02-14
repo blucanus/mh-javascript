@@ -1,0 +1,12 @@
+
+.navbar-brand > img {
+    height: 2.5rem; 
+    margin-right: 1rem;   
+}
+main {
+    height:75vh;
+}
+footer {
+    height:15vh;
+    background: #01e1ff;
+}
