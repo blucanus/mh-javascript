@@ -1,12 +1,46 @@
 
+body {
+    background: rgb(0,0,0);
+    background: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(6,6,89,1) 28%, rgba(0,0,0,1) 100%);
+    font-family: 'DM Serif Display', serif;
+}
 .navbar-brand > img {
     height: 2.5rem; 
     margin-right: 1rem;   
 }
+.nav-new {
+    background-color: #090f29 !important;
+}
+.nav-new .nav-link {
+    color: #fff !important;
+}
+.nav-new .nav-item.active, .nav-new .nav-item:hover, .eventos .card-body .btn.btn-primary {
+    background-color: #5c68f0;
+    transform: skewX(-30deg);
+    padding: 0 20px;
+}
+.eventos .card-body .btn.btn-primary {
+    border-radius: 0;
+    padding: 5px 20px;
+    box-shadow: 4px 3px 0px #fff;
+}
+.nav-new .nav-item.active a, .nav-new .nav-item:hover a, .eventos .card-body .btn.btn-primary span {
+    transform: skewX(30deg);
+}
+.nav-section {
+    background-color: #5c68f0 !important;
+}
+.nav-section > div, .nav-section > div > a, .form-switch > label, main .card .card-body {
+    color: #fff;
+}
 main {
-    height:75vh;
+    min-height:85vh;
+}
+main .card {
+    border: 1px solid #5c68f0;
+    background-color: #001737;
 }
 footer {
     height:15vh;
-    background: #01e1ff;
+    background: #5c68f0;
 }
