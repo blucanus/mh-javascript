@@ -14,12 +14,12 @@ body {
 .nav-new .nav-link {
     color: #fff !important;
 }
-.nav-new .nav-item.active, .nav-new .nav-item:hover, .eventos .card-body .btn.btn-primary {
+.nav-new .nav-item.active, .nav-new .nav-item:hover, .eventos .card-body .btn.btn-primary, .btn-new{
     background-color: #5c68f0;
     transform: skewX(-30deg);
     padding: 0 20px;
 }
-.eventos .card-body .btn.btn-primary {
+.eventos .card-body .btn.btn-primary, .btn-new {
     border-radius: 0;
     padding: 5px 20px;
     box-shadow: 4px 3px 0px #fff;
@@ -44,3 +44,14 @@ footer {
     height:15vh;
     background: #5c68f0;
 }
+.redes a {
+    font-size: 1.5rem;
+}
+
+.form-control {
+    background: none !important;
+    color: #fff;
+  }
+  .form-control:focus {
+    color: #fff;
+  }
