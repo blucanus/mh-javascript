@@ -8,7 +8,7 @@ let eventos = "";
 
 for (const evento of data.events) {
     if(evento.date < currentDate) {
-    eventos += `<div class="col-xl-3 col-lg-6 col-md-6 col-sm-12">
+    eventos += `<div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-12">
     <div class="card mb-3">
         <img src="${evento.image}" alt="" class="card-img-top">
         <div class="card-body text-center">

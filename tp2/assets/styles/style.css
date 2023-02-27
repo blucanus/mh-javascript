@@ -17,7 +17,10 @@ body {
 .nav-new .nav-item.active, .nav-new .nav-item:hover, #eventos .card-body .btn.btn-primary, .btn-new{
     background-color: #5c68f0;
     transform: skewX(-30deg);
-    padding: 0 20px;
+    padding: 0 10px;
+}
+.nav-new .nav-item {
+    padding: 0 10px;
 }
 #eventos .card-body .btn.btn-primary, .btn-new {
     border-radius: 0;
@@ -55,3 +58,6 @@ footer {
   .form-control:focus {
     color: #fff;
   }
+.navbar-toggler.collapsed {
+    border: 1px solid;
+}
