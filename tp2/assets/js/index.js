@@ -13,11 +13,10 @@ for (const evento of data.events) {
             <p class="card-text">${evento.description}</p>
             <div class="d-flex justify-content-between align-items-center">
                 <p class="price m-0">Price U$S ${evento.price}</p>
-                <a href="#" class="btn btn-primary"><span>More Info</span></a>
+                <a href="details.html?id=${evento._id}" class="btn btn-primary"><span>More Info</span></a>
             </div>                            
         </div>
     </div>
 </div>`;
-
 }
 eventosIndex.innerHTML = eventos
