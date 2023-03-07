@@ -4,7 +4,8 @@ const eventosIndex = document.querySelector('#eventos');
 
 let eventos = "";
 
-for (const evento of data.events) {
+function cardEvents() {
+    for (const evento of data.events) {
     eventos += `<div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-12">
     <div class="card mb-3">
         
@@ -22,3 +23,18 @@ for (const evento of data.events) {
 </div>`;
 }
 eventosIndex.innerHTML = eventos 
+} 
+
+cardEvents();
+
+
+let buscador = document.getElementById("search");
+
+
+buscador.addEventListener("keyup", ()=>{
+    /* const eventoFiltrado = cardEvents().filter((eventos)=>eventos.name.includes(buscador.value))
+    console.log(eventoFiltrado); */
+
+    const eventosFiltrados = data.events.filter((eventos)=>eventos.name.toLowerCase().includes(buscador.value))
+    console.log(eventosFiltrados);
+})
