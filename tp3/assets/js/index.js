@@ -33,3 +33,32 @@ buscador.addEventListener("keyup", ()=>{
     //console.log(eventosFiltrados);
     cardEvents(eventosFiltrados, "#eventos");
 })
+
+let formCategories = document.getElementById("categories")
+
+let categories = data.events.forEach((cat)=> {
+    //console.log(cat.category);
+    formCategories += `<div class="form-check form-switch">
+    <input class="form-check-input" type="checkbox" role="switch" id="${cat.category}" value="${cat.category}" >
+    <label class="form-check-label" >${cat.category}</label>
+    </div>`
+    estaActivo(cat.category)
+})
+function estaActivo(categoryForCheck){
+
+    const categoryCheck = document.getElementById(categoryForCheck)
+    console.log(categoryCheck);
+    /* categoryCheck.addEventListener("change", estaActivo)
+
+    let checked = categoryCheck.checked
+    let nombreCategory = categoryCheck.value
+    const categoriaElegida = data.events.filter((eventos)=>eventos.category == nombreCategory)
+    if(checked){
+        console.log(nombreCategory);
+        console.log(categoriaElegida);
+        cardEvents(categoriaElegida, "#eventos")
+    }else {
+        cardEvents(data.events, "#eventos");
+        console.log('desactivado');
+    } */
+}
