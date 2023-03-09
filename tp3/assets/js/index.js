@@ -1,16 +1,14 @@
 // TARJETAS EVENTOS
 
-const eventosIndex = document.querySelector('#eventos');
+function cardEvents(data, selector) {
 
-let eventos = "";
+    const eventosIndex = document.querySelector(selector);
+    let eventos = "";
 
-function cardEvents() {
-    for (const evento of data.events) {
+    for (const evento of data) {
     eventos += `<div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-12">
     <div class="card mb-3">
-        
-            <img src="${evento.image}" alt="" class="card-img-top">
-        
+        <img src="${evento.image}" alt="" class="card-img-top">
         <div class="card-body text-center">
             <h5 class="card-title">${evento.name}</h5>
             <p class="card-text">${evento.description}</p>
@@ -24,17 +22,14 @@ function cardEvents() {
 }
 eventosIndex.innerHTML = eventos 
 } 
-
-cardEvents();
-
+cardEvents(data.events, "#eventos");
 
 let buscador = document.getElementById("search");
-
 
 buscador.addEventListener("keyup", ()=>{
     /* const eventoFiltrado = cardEvents().filter((eventos)=>eventos.name.includes(buscador.value))
     console.log(eventoFiltrado); */
-
-    const eventosFiltrados = data.events.filter((eventos)=>eventos.name.toLowerCase().includes(buscador.value))
-    console.log(eventosFiltrados);
+    const eventosFiltrados = data.events.filter((eventos)=>eventos.name.toLowerCase().startsWith(buscador.value))
+    //console.log(eventosFiltrados);
+    cardEvents(eventosFiltrados, "#eventos");
 })
