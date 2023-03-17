@@ -1,0 +1,83 @@
+
+body {
+    background: rgb(0,0,0);
+    background: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(6,6,89,1) 28%, rgba(0,0,0,1) 100%);
+    font-family: 'DM Serif Display', serif;
+}
+.navbar-brand > img {
+    height: 2.5rem; 
+    margin-right: 1rem;   
+}
+.nav-new {
+    background-color: #090f29 !important;
+}
+.nav-new .nav-link {
+    color: #fff !important;
+}
+.nav-new .nav-item.active, .nav-new .nav-item:hover, #eventos .card-body .btn.btn-primary, .btn-new{
+    background-color: #5c68f0;
+    transform: skewX(-30deg);
+    padding: 0 10px;
+}
+.nav-new .nav-item {
+    padding: 0 10px;
+}
+#eventos .card-body .btn.btn-primary, .btn-new {
+    border-radius: 0;
+    padding: 5px 15px;
+    box-shadow: 4px 3px 0px #fff;
+}
+.nav-new .nav-item.active a, .nav-new .nav-item:hover a, #eventos .card-body .btn.btn-primary span {
+    transform: skewX(30deg);
+}
+.nav-section {
+    background-color: #5c68f0 !important;
+}
+.nav-section > div, .nav-section > div > a, .form-switch > label, main .card .card-body {
+    color: #fff;
+}
+main {
+    min-height:85vh;
+}
+main .card {
+    border: 1px solid #5c68f0;
+    background-color: #001737;
+}
+footer {
+    padding-bottom: 1rem;
+    background: #5c68f0;
+}
+.redes a {
+    font-size: 1.5rem;
+}
+
+.form-control {
+    background: none !important;
+    color: #fff;
+  }
+  .form-control:focus {
+    color: #fff;
+  }
+.navbar-toggler.collapsed {
+    border: 1px solid;
+}
+.card-footer h4 {
+    font-size: 1rem;
+    color: #fff;
+    
+  }
+  .card-footer {
+    border-top: 1px solid #ffffff73;
+  }
+
+  .col-xl-3.col-lg-4.col-md-6.col-sm-6.col-xs-12 {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.card-body.text-center {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
