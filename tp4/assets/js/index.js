@@ -1,5 +1,12 @@
 // TARJETAS EVENTOS
-console.log(fetch('https://mindhub-xj03.onrender.com/api/amazing'));
+fetch('https://mindhub-xj03.onrender.com/api/amazing')
+.then(response => response.json())
+.then(dataEvents => {
+    dataApi = dataEvents.events
+    cardEvents(dataApi, "#eventos")
+    createChecks(dataApi)
+    estaActivo(dataApi)
+})
 
 
 function cardEvents(data, selector) {
@@ -24,42 +31,37 @@ function cardEvents(data, selector) {
 }
 eventosIndex.innerHTML = eventos 
 } 
-cardEvents(data.events, "#eventos");
+function createChecks(apiEvents){
+/*  let buscador = document.getElementById("search");
 
-let buscador = document.getElementById("search");
+    buscador.addEventListener("keyup", estaActivo) */
 
-buscador.addEventListener("keyup", estaActivo)
+    let formCategories = document.getElementById("categories")
+    let setCategories = new Set(); //devuelve los elementos no duplicados
+    let categories = apiEvents.forEach((cat)=> {
+        setCategories.add(cat.category);
+    })
+    setCategories.forEach((category)=> {
+        formCategories.innerHTML += `<div class="form-check form-switch">
+        <input class="form-check-input" type="checkbox" role="switch" id="${category}" value="${category}" onclick="estaActivo(${category})">
+        <label class="form-check-label" >${category}</label>
+        </div>`
+        //estaActivo(category)
+    })
+}
 
-let formCategories = document.getElementById("categories")
-let setCategories = new Set(); //devuelve los elementos no duplicados
-let categories = data.events.forEach((cat)=> {
-    setCategories.add(cat.category);
-})
-console.log(setCategories);
-setCategories.forEach((category)=> {
-    formCategories.innerHTML += `<div class="form-check form-switch">
-    <input class="form-check-input" type="checkbox" role="switch" id="${category}" value="${category}" onclick="estaActivo()">
-    <label class="form-check-label" >${category}</label>
-    </div>`
-    //estaActivo(category)
-})
-function estaActivo(){
+
+function estaActivo(apiDataEvents){
+
+    let buscador = document.getElementById("search");
+
+    buscador.addEventListener("keyup", estaActivo)
 
     const categoryCheck = document.querySelectorAll("input:checked")
     let categoryString = Array.from(categoryCheck).map(c => c.value)
-    console.log(categoryString);
 
-    const categoriaElegida = data.events.filter((eventos)=>(categoryString.length == 0 || categoryString.includes(eventos.category)) && eventos.name.toLowerCase().startsWith(buscador.value))
-    console.log(categoriaElegida);
-   /*  if(checked){
-        console.log(nombreCategory);
-        console.log(categoriaElegida);
-        cardEvents(categoriaElegida, "#eventos")
-    }else {
-        cardEvents(data.events, "#eventos");
-        console.log('desactivado');
-    } */
-
-   /*  const eventosFiltrados = data.events.filter((eventos)=>eventos.name.toLowerCase().startsWith(buscador.value))*/
+    console.log(apiDataEvents);
+    const categoriaElegida = apiDataEvents.filter((eventos)=>(categoryString.length == 0 || categoryString.includes(eventos.category)) && eventos.name.toLowerCase().startsWith(buscador.value))
+   
     cardEvents(categoriaElegida, "#eventos");
 }

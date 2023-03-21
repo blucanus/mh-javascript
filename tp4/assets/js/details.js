@@ -1,17 +1,25 @@
-const queryString = location.search
+fetch('https://mindhub-xj03.onrender.com/api/amazing')
+.then(response => response.json())
+.then(dataEvents => {
+    dataApi = dataEvents.events
+    //console.log(dataApi);
+    eventDetail(dataApi)
+})
 
-const params = new URLSearchParams(queryString)
 
 
-//let params = new URLSearchParams(document.location.search);
-const id_event = params.get("id")
+function eventDetail(apiData){
+    const queryString = location.search
 
-const evento = data.events.find(data => data._id == id_event)
-console.log(evento);
+    const params = new URLSearchParams(queryString)
 
-const container = document.querySelector('#eventos')
+    const id_event = params.get("id")
+    const evento = apiData.find(data => data._id == id_event)
+    console.log(evento);
 
-container.innerHTML = `
+    const container = document.querySelector('#eventos')
+
+    container.innerHTML = `
         <div class="card mb-4">
             <img src="${evento.image}" alt="" class="card-img-top">
             <div class="card-body text-center">
@@ -34,3 +42,4 @@ container.innerHTML = `
                     </div>
                 </div>   
         </div>`
+}
