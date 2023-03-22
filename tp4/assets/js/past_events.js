@@ -2,41 +2,38 @@
 fetch('https://mindhub-xj03.onrender.com/api/amazing')
 .then(response => response.json())
 .then(dataEvents => {
+    currentDate = dataEvents.currentDate;
     dataApi = dataEvents.events
-    //console.log(dataApi);
-    pastEvents(dataEvents.currentDate, dataApi)
+    cardEvents(dataApi, "#eventos")
     createChecks(dataApi)
+    estaActivo()
 })
 
-function pastEvents(currentD, apiEvents){
-    const eventosIndex = document.querySelector('#eventos');
+function cardEvents(data, selector) {
 
-    let currentDate = currentD;
-    console.log(currentDate);
+    const eventosIndex = document.querySelector(selector);
     let eventos = "";
 
-    for (const evento of apiEvents) {
-        if(evento.date < currentDate) {
-        eventos += `<div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-12">
-        <div class="card mb-3">
-            <img src="${evento.image}" alt="" class="card-img-top">
-            <div class="card-body text-center">
-                <h5 class="card-title">${evento.name}</h5>
-                <p class="card-text">${evento.description}</p>
-                <div class="d-flex justify-content-between align-items-center">
-                    <p class="price m-0">Price U$S ${evento.price}</p>
-                    <a href="details.html?id=${evento._id}" class="btn btn-primary"><span>More Info</span></a>
-                </div>                            
+    for (const evento of data) {
+        if(evento.date < currentDate){
+            eventos += `<div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-12">
+            <div class="card mb-3">
+                <img src="${evento.image}" alt="" class="card-img-top">
+                <div class="card-body text-center">
+                    <h5 class="card-title">${evento.name}</h5>
+                    <p class="card-text">${evento.description}</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <p class="price m-0">Price U$S ${evento.price}</p>
+                        <a href="details.html?id=${evento._id}" class="btn btn-primary me-2"><span>More Info</span></a>
+                    </div>                            
+                </div>
             </div>
-        </div>
-    </div>`;
-
-    } else {
-        `<h3>There is no events</h3>`
-    }
-    }
-    eventosIndex.innerHTML = eventos
-}
+        </div>`;
+        }
+        eventosIndex.innerHTML = eventos 
+        }
+   
+} 
 
 function createChecks(apiEvents){
     
@@ -52,4 +49,20 @@ function createChecks(apiEvents){
             </div>`
             //estaActivo(category)
         })
+    }
+
+
+function estaActivo(){
+    let buscador = document.getElementById("search");
+    
+        buscador.addEventListener("keyup", estaActivo);
+
+        const categoryCheck = document.querySelectorAll("input:checked")
+        let categoryString = Array.from(categoryCheck).map(c => c.value)
+        // console.log(eventsFromApi.length);
+
+        let categoriaElegida = dataApi.filter((eventos)=>(categoryString.length == 0 || categoryString.includes(eventos.category)) && eventos.name.toLowerCase().startsWith(buscador.value))
+        cardEvents(categoriaElegida, "#eventos");
+        // console.log(categoriaElegida);
+        
     }

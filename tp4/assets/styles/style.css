@@ -81,3 +81,9 @@ footer {
     flex-direction: column;
     justify-content: space-between;
 }
+.eventos table h3, .eventos h3{
+
+    color: #fff;       
+    text-align: center;
+
+}

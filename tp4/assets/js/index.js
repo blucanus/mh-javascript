@@ -5,8 +5,8 @@ fetch('https://mindhub-xj03.onrender.com/api/amazing')
     dataApi = dataEvents.events
     cardEvents(dataApi, "#eventos")
     createChecks(dataApi)
-    estaActivo(dataApi)
-})
+    estaActivo()
+}).catch(err => console.log(err.message));
 
 
 function cardEvents(data, selector) {
@@ -51,17 +51,17 @@ function createChecks(apiEvents){
 }
 
 
-function estaActivo(apiDataEvents){
+function estaActivo(){
+let buscador = document.getElementById("search");
 
-    let buscador = document.getElementById("search");
+        buscador.addEventListener("keyup", estaActivo);
 
-    buscador.addEventListener("keyup", estaActivo)
+        const categoryCheck = document.querySelectorAll("input:checked")
+        let categoryString = Array.from(categoryCheck).map(c => c.value)
+       // console.log(eventsFromApi.length);
 
-    const categoryCheck = document.querySelectorAll("input:checked")
-    let categoryString = Array.from(categoryCheck).map(c => c.value)
-
-    console.log(apiDataEvents);
-    const categoriaElegida = apiDataEvents.filter((eventos)=>(categoryString.length == 0 || categoryString.includes(eventos.category)) && eventos.name.toLowerCase().startsWith(buscador.value))
-   
-    cardEvents(categoriaElegida, "#eventos");
+        let categoriaElegida = dataApi.filter((eventos)=>(categoryString.length == 0 || categoryString.includes(eventos.category)) && eventos.name.toLowerCase().startsWith(buscador.value))
+        cardEvents(categoriaElegida, "#eventos");
+       // console.log(categoriaElegida);
+    
 }
